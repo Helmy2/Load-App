@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.load_app.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
-    lateinit var binding:ActivityDetailBinding
+    private lateinit var binding:ActivityDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailBinding.inflate(layoutInflater)

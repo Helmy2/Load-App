@@ -1,5 +1,6 @@
 package com.example.load_app
 
+import android.annotation.SuppressLint
 import android.app.DownloadManager
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,20 +10,22 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import com.example.load_app.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
-
+    val viewModel: MainViewModel by viewModels()
     private var downloadID: Long = 0
 
-    lateinit var binding : ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var notificationManager: NotificationManager
     private lateinit var pendingIntent: PendingIntent
     private lateinit var action: NotificationCompat.Action
 
+    @SuppressLint("ObjectAnimatorBinding")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,8 +35,17 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
         binding.customButton.setOnClickListener {
-            download()
+            Log.i("TAG", "binding.customButton.setOnClickListener")
+            viewModel.update()
+//            download()
         }
+
+        viewModel.processState.observe(this) {
+//            binding.customButton.updateProgress(it)
+//            binding.customButton.progress = it
+            binding.customButton.buttonState = it
+        }
+
     }
 
     private val receiver = object : BroadcastReceiver() {
