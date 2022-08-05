@@ -17,7 +17,7 @@ import androidx.core.app.NotificationCompat
 import com.example.load_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    val viewModel: MainViewModel by viewModels()
+    private val viewModel: MainViewModel by viewModels()
     private var downloadID: Long = 0
 
     private lateinit var binding: ActivityMainBinding
@@ -35,15 +35,13 @@ class MainActivity : AppCompatActivity() {
         registerReceiver(receiver, IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE))
 
         binding.customButton.setOnClickListener {
-            Log.i("TAG", "binding.customButton.setOnClickListener")
             viewModel.update()
+            binding.customButton.startAnimation(1000)
+
 //            download()
         }
 
         viewModel.processState.observe(this) {
-//            binding.customButton.updateProgress(it)
-//            binding.customButton.progress = it
-            binding.customButton.buttonState = it
         }
 
     }

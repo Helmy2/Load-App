@@ -15,11 +15,9 @@ class MainViewModel : ViewModel() {
 
     fun update() {
         viewModelScope.launch {
-
             processState.value = ButtonState.Loading
             delay(1000L)
             processState.value = ButtonState.Completed
-
         }
     }
 }
