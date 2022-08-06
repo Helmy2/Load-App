@@ -9,8 +9,6 @@ import androidx.core.animation.doOnCancel
 import androidx.core.animation.doOnEnd
 import kotlin.math.roundToInt
 
-private const val TAG = "LoadingButton"
-
 class LoadingButton @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
@@ -33,12 +31,17 @@ class LoadingButton @JvmOverloads constructor(
     private var textColor = resources.getColor(R.color.white, null)
     private var iconColor = resources.getColor(R.color.colorAccent, null)
 
-    private var isAnimated = false
+    var isAnimated = false
+        private set
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         textAlign = Paint.Align.CENTER
         textSize = fontSize
         typeface = Typeface.create("", Typeface.BOLD)
+    }
+
+    companion object {
+        const val standardAnimTime = 1500L
     }
 
     init {
@@ -61,7 +64,7 @@ class LoadingButton @JvmOverloads constructor(
                 textColor =
                     getColor(R.styleable.LoadingButton_textColor, textColor)
                 buttonColor =
-                    getColor(R.styleable.LoadingButton_buttonColor,buttonColor)
+                    getColor(R.styleable.LoadingButton_buttonColor, buttonColor)
                 fontSize = getFloat(R.styleable.LoadingButton_fontSize, fontSize)
                 currentProgress = getFloat(R.styleable.LoadingButton_progress, currentProgress)
             } finally {
@@ -71,7 +74,7 @@ class LoadingButton @JvmOverloads constructor(
     }
 
     fun startAnimation(
-        durationTime: Long = 1500L
+        durationTime: Long = standardAnimTime
     ) {
         valueAnimator.cancel()
         isAnimated = true
@@ -79,6 +82,8 @@ class LoadingButton @JvmOverloads constructor(
             currentProgress, 1f
         ).apply {
             duration = durationTime
+            repeatMode = ValueAnimator.REVERSE
+            repeatCount = ValueAnimator.INFINITE
             addUpdateListener {
                 currentProgress = it.animatedValue as Float
                 invalidate()
@@ -94,6 +99,9 @@ class LoadingButton @JvmOverloads constructor(
         }
     }
 
+    fun stopAnimation(){
+        isAnimated = false
+    }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         widthSize = width

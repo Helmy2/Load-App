@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">ND940C3-Project</string>
     <string name="app_description">Download files from Internet</string>
     <string name="action_settings">Settings</string>
@@ -17,5 +17,17 @@
     <string name="load_app">LoadApp - Current repository by Udacity</string>
     <string name="retrofit">Retrofit - Type-safe HTTP client for Android and Java by Square, Inc</string>
     <string name="download_image">Download image</string>
+
+    <string name="glide_url" translatable="false">https://github.com/bumptech/glide/archive/master.zip</string>
+    <string name="load_app_url" translatable="false">https://github.com/udacity/nd940-c3-advanced-android-programming-project-starter/archive/master.zip</string>
+    <string name="retrofit_url" translatable="false">https://github.com/square/retrofit/archive/master.zip</string>
+    <string name="not_select_item_massage">Please select the file to download</string>
+    <string name="download_is_done">Download is done</string>
+    <string name="download_notification_channel_id" translatable="false">download_notification_channel_id</string>
+    <string name="download_notification_channel_name" translatable="true">Download</string>
+    <string name="notification_message">The %1$s download is complete.</string>
+    <string name="ok">OK</string>
+    <string name="status">Status</string>
+    <string name="file_name">File Name</string>
 
 </resources>

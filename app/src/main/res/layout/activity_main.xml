@@ -61,6 +61,8 @@
                 app:layout_constraintGuide_percent="0.25" />
 
             <RadioGroup
+
+                android:id="@+id/radioGroup"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -71,7 +73,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView">
 
                 <RadioButton
-                    android:id="@+id/radioButton"
+                    android:id="@+id/gildeRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
@@ -81,7 +83,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton2"
+                    android:id="@+id/loadAppRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
@@ -91,7 +93,7 @@
                     android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton3"
+                    android:id="@+id/retrofitRadioButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingTop="16dp"
