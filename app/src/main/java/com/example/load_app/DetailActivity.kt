@@ -2,10 +2,10 @@ package com.example.load_app
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.load_app.databinding.ActivityDetailBinding
 import com.example.load_app.model.DownloadDetails
+import com.example.load_app.notification.NOTIFICATION_DETAILS_KEY
 
 private const val TAG = "DetailActivity"
 
@@ -17,6 +17,8 @@ class DetailActivity : AppCompatActivity() {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbar)
         binding.lifecycleOwner = this
+
+        binding.motionLayout
 
         intent.getParcelableExtra<DownloadDetails?>(NOTIFICATION_DETAILS_KEY)?.also {
             binding.downloadDetails = it

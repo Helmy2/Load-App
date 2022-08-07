@@ -22,6 +22,8 @@ import com.example.load_app.databinding.ActivityMainBinding
 import com.example.load_app.model.DownloadDetails
 import com.example.load_app.model.DownloadOption
 import com.example.load_app.model.DownloadStatus
+import com.example.load_app.notification.NOTIFICATION_DETAILS_KEY
+import com.example.load_app.notification.sendNotification
 import java.io.File
 
 private const val TAG = "MainActivity"
@@ -96,7 +98,7 @@ class MainActivity : AppCompatActivity() {
                     } else if (status == DownloadManager.STATUS_FAILED) {
                         downloadDetails = DownloadDetails(title, DownloadStatus.FAILED)
                     }
-                    notificationManager.sendNotification(downloadDetails!!,applicationContext)
+                    notificationManager.sendNotification(downloadDetails!!, applicationContext)
                 }
                 Log.i(TAG, "onReceive: ${downloadDetails?.name} ${downloadDetails?.status}")
             }

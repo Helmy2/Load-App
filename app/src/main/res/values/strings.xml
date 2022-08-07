@@ -28,6 +28,6 @@
     <string name="notification_message">The %1$s download is complete.</string>
     <string name="ok">OK</string>
     <string name="status">Status</string>
-    <string name="file_name">File Name</string>
+    <string name="file_name">File name</string>
 
 </resources>

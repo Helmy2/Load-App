@@ -1,4 +1,4 @@
-package com.example.load_app
+package com.example.load_app.notification
 
 import android.annotation.SuppressLint
 import android.app.NotificationManager
@@ -6,6 +6,8 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import androidx.core.app.NotificationCompat
+import com.example.load_app.DetailActivity
+import com.example.load_app.R
 import com.example.load_app.model.DownloadDetails
 
 
